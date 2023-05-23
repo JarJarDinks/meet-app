@@ -17,11 +17,11 @@ meet-app is a test driven development web app that helps users research, schedul
 
 ### FEATURE 1: FILTER EVENTS BY CITY
 **User Story**
-As a user, I should be able to filter events by city so that I can see the list of events taking place in that specific city.
+- As a user, I should be able to filter events by city so that I can see the list of events taking place in that specific city.
 
 ### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
 **User Story**
-As a user, I want the ability to toggle the visibility of an event's details so that I can control the amount of information I see about the event.
+- As a user, I want the ability to toggle the visibility of an event's details so that I can control the amount of information I see about the event.
 
 **Scenarios**
 - Scenario 1: Event details are initially collapsed.
@@ -33,7 +33,7 @@ As a user, I want the ability to toggle the visibility of an event's details so 
 
 ### FEATURE 3: CUSTOMIZE NUMBER OF EVENTS
 **User Story**
-As a user, I want the ability to specify the number of events I want to view so that I can personalize my event viewing experience.
+- As a user, I want the ability to specify the number of events I want to view so that I can personalize my event viewing experience.
 
 **Scenarios**
 - Scenario 1: Default number of events is 32 when no specific number is specified.
@@ -43,7 +43,7 @@ As a user, I want the ability to specify the number of events I want to view so 
 
 ### FEATURE 4: OFFLINE USAGE
 **User Story**
-As a user, I want the ability to use the app offline so that I can access event information even without an internet connection.
+- As a user, I want the ability to use the app offline so that I can access event information even without an internet connection.
 
 **Scenarios**
 - Scenario 1: Display cached data when there's no internet connection.
@@ -53,7 +53,7 @@ As a user, I want the ability to use the app offline so that I can access event 
 
 ### FEATURE 5: DATA VISUALIZATION
 **User Story**
-As a user, I want to visualize data in the form of a chart so that I can easily compare the number of upcoming events in different cities.
+- As a user, I want to visualize data in the form of a chart so that I can easily compare the number of upcoming events in different cities.
 
 **Scenarios**
 - Scenario 1: Display a chart representing the number of upcoming events in each city.
