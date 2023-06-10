@@ -48,7 +48,6 @@
       const getURLElement = document.getElementById('getURL');
       const resultElement = document.getElementById('result');
       const resultLink = document.getElementById('authURL');
-      // Replace this with your own endpoint
       const getAuthURL =
         'https://9qbkag0a3m.execute-api.us-west-1.amazonaws.com/dev/api/get-auth-url';
 
@@ -78,7 +77,6 @@
       getAccessToken.onclick = function () {
         let code = codeValue.value;
 
-        // if the authorization code is not URL-encoded, then URL-encode it.
         if (decodeURIComponent(code) === code) {
           code = encodeURIComponent(codeValue.value);
         }
@@ -92,6 +90,8 @@
           });
       };
       // --------------------- END OF STEP 2
+
+      // --------------------- STEP 3
       const getEvents = document.getElementById('getEvents');
       const events = document.getElementById('events');
       const getCalendarEvents =
@@ -108,7 +108,7 @@
             events.innerText = JSON.stringify(json, null, 2);
           });
       };
-      // -- END OF STEP 3
+      // --------------------- END OF STEP 3
     </script>
   </body>
 </html>

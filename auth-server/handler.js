@@ -80,12 +80,16 @@ module.exports.getAccessToken = async (event) => {
       console.error(err);
       return {
         statusCode: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
         body: JSON.stringify(err),
       };
     });
 };
 
-module.exports.getCalendarEvents = (event) => {
+module.exports.getCalendarEvents = async (event) => {
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
@@ -121,15 +125,18 @@ module.exports.getCalendarEvents = (event) => {
         statusCode: 200,
         headers: {
           'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
         },
         body: JSON.stringify({ events: results.data.items }),
       };
     })
     .catch((error) => {
+      console.log(error);
       return {
         statusCode: 500,
         headers: {
           'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
         },
         body: JSON.stringify(error),
       };
@@ -139,3 +146,4 @@ module.exports.getCalendarEvents = (event) => {
 // Serverless deployment endpoints:
 // getAuthURL: https://9qbkag0a3m.execute-api.us-west-1.amazonaws.com/dev/api/get-auth-url
 // getAccessToken: https://9qbkag0a3m.execute-api.us-west-1.amazonaws.com/dev/api/token/{code}
+// getCalendarEvents:  https://9qbkag0a3m.execute-api.us-west-1.amazonaws.com/dev/api/get-events/{access_token}
