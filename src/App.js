@@ -4,11 +4,28 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
+
 class App extends Component {
-  state = {
-    events: [],
-    locations: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      events: [],
+      locations: [],
+    };
+  }
+
+  componentDidMount() {
+    this.mounted = true;
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({ events, locations: extractLocations(events) });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   updateEvents = (location) => {
     getEvents().then((events) => {
@@ -22,21 +39,9 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
-    this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
-  }
-  componentWillUnmount() {
-    this.mounted = false;
-  }
-
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}

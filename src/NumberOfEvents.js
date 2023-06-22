@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
-  state = {
-    number: 32,
-    errorText: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      number: 32,
+      errorText: '',
+    };
+  }
 
   handleNumberChange = (event) => {
     const minValue = 0;
@@ -25,17 +28,17 @@ class NumberOfEvents extends Component {
 
   render() {
     return (
-      <div className="NumberOfEvents">
+      <div className='NumberOfEvents'>
         <h3>Number of events</h3>
         <input
-          id="number-of-events"
-          type="number"
-          className="number"
+          id='number-of-events'
+          type='number'
+          className='number'
           value={this.state.number}
           onChange={this.handleNumberChange}
-          min="0"
+          min='0'
         />
-        <p className="error-text">{this.state.errorText}</p>
+        <p className='error-text'>{this.state.errorText}</p>
       </div>
     );
   }

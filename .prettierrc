@@ -7,6 +7,11 @@
   "useTabs": false,
   "jsxBracketSameLine": true,
   "arrowParens": "always",
-  "quoteProps": "as-needed",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "endOfLine": "auto",
+  "jsxSingleQuote": true,
+  "quoteProps": "consistent",
+  "insertPragma": false,
+  "proseWrap": "always",
+  "htmlWhitespaceSensitivity": "ignore"
 }

@@ -1,10 +1,12 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable no-undef */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
-import { mockData } from '../mock-data';
+import mockData from '../mock-data';
 import { extractLocations, getEvents } from '../api';
 
 // unit tests
