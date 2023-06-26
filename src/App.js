@@ -6,11 +6,13 @@ import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 
 class App extends Component {
-state = 
+  constructor(props) {
+    super(props);
+    this.state = {
       events: [],
       locations: [],
     };
-
+  }
 
   componentDidMount() {
     this.mounted = true;
