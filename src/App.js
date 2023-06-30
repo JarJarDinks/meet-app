@@ -3,14 +3,43 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+import './nprogress.css';
+
 class App extends Component {
   state = {
     events: [],
     locations: [],
+    selectedLocation: 'all',
+    NumberOfEvents: 32,
+    showWelcomeScreen: undefined,
   };
 
-  updateEvents = (location) => {
+  async componentDidMount() {
+    this.mounted = true;
+    if (window.location.href.startsWith('http://localhost')) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events,
+            locations: extractLocations(events),
+          });
+        }
+      });
+    }
+
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({ events, locations: extractLocations(events) });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents =
         location === 'all'
@@ -21,18 +50,6 @@ class App extends Component {
       });
     });
   };
-
-  componentDidMount() {
-    this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
-  }
-  componentWillUnmount() {
-    this.mounted = false;
-  }
 
   render() {
     return (
