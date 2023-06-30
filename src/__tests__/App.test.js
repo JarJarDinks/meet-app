@@ -72,4 +72,20 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(allEvents);
     AppWrapper.unmount();
   });
+
+  it('should update the number of events when input is changed', async () => {
+    const NumberOfEventsInput = await page.$('#numberOfEventsInput');
+
+    await NumberOfEventsInput.click({ clickCount: 3 });
+    await NumberOfEventsInput.type('Backspace');
+    await NumberOfEventsInput.type('Backspace');
+
+    await NumberOfEventsInput.type('10');
+
+    const value = await page.$eval(
+      '#numberOfEventsiniput',
+      (input) => input.value
+    );
+    expect(value).toBe('10');
+  });
 });
