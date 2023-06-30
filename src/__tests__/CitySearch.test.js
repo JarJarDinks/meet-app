@@ -45,6 +45,7 @@ describe('<CitySearch /> component', () => {
       suggestions.length + 1
     );
   });
+
   test('suggestion list match the query when changed', () => {
     CitySearchWrapper.setState({ query: '', suggestions: [] });
     CitySearchWrapper.find('.city').simulate('change', {

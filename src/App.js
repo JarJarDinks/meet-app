@@ -6,13 +6,43 @@ import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
 
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+import './nprogress.css';
+
 class App extends Component {
   state = {
     events: [],
     locations: [],
+    selectedLocation: 'all',
+    NumberOfEvents: 32,
+    showWelcomeScreen: undefined,
   };
 
-  updateEvents = (location) => {
+  async componentDidMount() {
+    this.mounted = true;
+    if (window.location.href.startsWith('http://localhost')) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events,
+            locations: extractLocations(events),
+          });
+        }
+      });
+    }
+
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({ events, locations: extractLocations(events) });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents =
         location === 'all'
@@ -24,46 +54,9 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
-    this.mounted = true;
-    if (window.location.href.startsWith('http://localhost')) {
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
-  }
-
-  getEvents().then((events) => {
-    if (this.mounted) {
-      this.setState({ events, locaions: extractLocations(events) })
-    }
-  });
-
-  const accessToken = localStorage.getItem('access_token');
-  const isTokenValid = ( await checkToken(accessToken)).error ? false : true;
-  const searchParams = new URLSearchParams(window.location.search);
-
-  const code = searchParams.get('code');
-  this.setState( !(code) || isTokenValid )
-  if ((code || isTokenValid) && this.mounted) {
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events: events.slice(0, this.state.NumberOfEvents),
-           locations: extractLocations(events) });
-      }
-    });
-  }
-}
-
-
-  componentWillUnmount() {
-    this.mounted = false;
-  }
-
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
