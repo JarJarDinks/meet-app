@@ -44,3 +44,6 @@ describe('<NumberOfEvents /> component', () => {
     expect(RenderedNumberOfEvents.state('number')).toBe(32);
   });
 });
+
+// Integration Testing
+describe('<NumberOfEvents /> integration', () => {
