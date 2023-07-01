@@ -31,7 +31,7 @@ describe('<NumberOfEvents /> component', () => {
   test('change state when user input changes', () => {
     expect(NumberOfEventsWrapper.state('number')).toBe(32);
     NumberOfEventsWrapper.find('input.number').simulate('change', {
-      target: { value: 12 },
+      target: { value: '12' },
     });
     expect(NumberOfEventsWrapper.state('number')).toBe(12);
   });
@@ -46,4 +46,4 @@ describe('<NumberOfEvents /> component', () => {
 });
 
 // Integration Testing
-describe('<NumberOfEvents /> integration', () => {
+describe('<NumberOfEvents /> integration', () => {});

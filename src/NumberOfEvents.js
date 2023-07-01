@@ -6,7 +6,7 @@ class NumberOfEvents extends Component {
     errorText: '',
   };
 
-  handleNumberChange = (event) => {
+  handleInputChanged = (event) => {
     const minValue = 0;
     const maxValue = 32;
     let inputValue = event.target.value;
@@ -25,17 +25,17 @@ class NumberOfEvents extends Component {
 
   render() {
     return (
-      <div className="NumberOfEvents">
+      <div className='NumberOfEvents'>
         <h3>Number of events</h3>
         <input
-          id="number-of-events"
-          type="number"
-          className="number"
+          id='number-of-events'
+          type='number'
+          className='number'
           value={this.state.number}
-          onChange={this.handleNumberChange}
-          min="0"
+          onChange={this.handleInputChanged}
+          min='0'
         />
-        <p className="error-text">{this.state.errorText}</p>
+        <p className='error-text'>{this.state.errorText}</p>
       </div>
     );
   }
