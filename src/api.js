@@ -1,7 +1,6 @@
 import { mockData } from './mock-data';
 import axios from 'axios';
 import NProgress from 'nprogress';
-import { npost } from 'q';
 
 export const extractLocations = (events) => {
   var extractLocations = events.map((event) => event.location);
@@ -34,23 +33,19 @@ const removeQuery = () => {
 };
 
 const getToken = async (code) => {
-  try {
-    const encodeCode = encodeURI;
+  const encodeCode = encodeURIComponent(code);
+  const { access_token } = await fetch(
+    'https://9qbkag0a3m.execute-api.us-west-1.amazonaws.com/dev/api/token/' +
+      encodeCode
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => error);
 
-    const response = await fetch(
-      'https://9qbkag0a3m.execute-api.us-west-1.amazonaws.com/dev/api/token' +
-        '/' +
-        encodeCode
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const { access_token } = await response.json();
-    access_token && localStorage.setItem('access_token', access_token);
-    return access_token;
-  } catch (error) {
-    error.json();
-  }
+  access_token && localStorage.setItem('access_token', access_token);
+
+  return access_token;
 };
 
 export const getEvents = async () => {
