@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
+import { InfoAlert } from './components/Alert';
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class App extends Component {
       numberOfEvents: 32,
       selectedLocation: 'all',
       showWelcomeScreen: undefined,
+      infoAlert: '',
     };
   }
 
@@ -114,17 +116,19 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <div className='alerts-container'>
-          <h1>Developer Meet Ups</h1>
-          <CitySearch
-            locations={this.state.locations}
-            updateEvents={this.updateEvents}
-          />
-          <NumberOfEvents
-            numberOfEvents={this.state.numberOfEvents}
-            updateEvents={this.updateEvents}
-          />
-        </div>
+        {/* <div className='alerts-container'>
+          {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+        </div> */}
+        <h1>Developer Meet Ups</h1>
+        <CitySearch
+          locations={this.state.locations}
+          updateEvents={this.updateEvents}
+        />
+        <NumberOfEvents
+          numberOfEvents={this.state.numberOfEvents}
+          updateEvents={this.updateEvents}
+        />
+
         <h4>Events in each city</h4>
 
         <EventList events={this.state.events} />
