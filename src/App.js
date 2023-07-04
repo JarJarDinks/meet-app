@@ -5,7 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
-import { InfoAlert } from './components/Alert';
+import { WarningAlert } from './components/Alert';
 
 class App extends Component {
   constructor(props) {
@@ -114,11 +114,15 @@ class App extends Component {
   };
 
   render() {
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className='App' />;
+
+    const offlineMessage = navigator.onLine
+      ? ''
+      : 'The app has no connection to the internet. The information displayed may not be up-to-date.';
+
     return (
       <div className='App'>
-        {/* <div className='alerts-container'>
-          {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-        </div> */}
         <h1>Developer Meet Ups</h1>
         <CitySearch
           locations={this.state.locations}
@@ -128,6 +132,7 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateEvents={this.updateEvents}
         />
+        <WarningAlert text={offlineMessage} />
 
         <h4>Events in each city</h4>
 
