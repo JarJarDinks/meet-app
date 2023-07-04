@@ -114,7 +114,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <div>
+        <div className='alerts-container'>
           <h1>Developer Meet Ups</h1>
           <CitySearch
             locations={this.state.locations}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { InfoAlert } from './components/Alert';
 
 class CitySearch extends Component {
   state = {
     query: '',
     suggestions: [],
     showSuggestions: undefined,
+    infoText: '',
   };
 
   handleInputChanged = (event) => {
@@ -16,11 +18,14 @@ class CitySearch extends Component {
     if (suggestions.length === 0) {
       this.setState({
         query: value,
+        infoText:
+          'We can not find the city you are looking for. Please try another city',
       });
     } else {
       return this.setState({
         query: value,
         suggestions,
+        infoText: '',
       });
     }
   };
@@ -30,6 +35,7 @@ class CitySearch extends Component {
       query: suggestion,
       suggestions: [],
       showSuggestions: false,
+      infoText: '',
     });
     this.props.updateEvents(suggestion, this.props.numnberOfEvents);
   };
@@ -60,10 +66,11 @@ class CitySearch extends Component {
               {suggestion}
             </li>
           ))}
-          <li onClick={() => this.handleItemClicked('all')}>
+          <li key='all' onMouseDown={() => this.handleItemClicked('all')}>
             <b>See all cities</b>
           </li>
         </ul>
+        <InfoAlert text={this.state.infoText} />
       </div>
     );
   }
