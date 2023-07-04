@@ -5,10 +5,11 @@ import { mockData } from '../mock-data';
 import { extractLocations } from '../api';
 
 describe('<CitySearch /> component', () => {
-  let locations, CitySearchWrapper;
+  let locations, CitySearchWrapper, infoText;
 
   beforeAll(() => {
     locations = extractLocations(mockData);
+    infoText = '';
     CitySearchWrapper = shallow(
       <CitySearch locations={locations} updateEvents={() => {}} />
     );
@@ -61,6 +62,7 @@ describe('<CitySearch /> component', () => {
   test('selecting a suggestion should change query state', () => {
     CitySearchWrapper.setState({
       query: 'Berlin',
+      infoText: '',
     });
     const suggestions = CitySearchWrapper.state('suggestions');
     CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
@@ -78,7 +80,7 @@ describe('<CitySearch /> component', () => {
   test('selecting a suggestion should hide the suggestions list', () => {
     CitySearchWrapper.setState({
       query: 'Berlin',
-      showSuggestions: undefined,
+      showSuggestions: false,
     });
     CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
     expect(CitySearchWrapper.state('showSuggestions')).toBe(false);
