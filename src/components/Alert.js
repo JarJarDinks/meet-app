@@ -16,7 +16,7 @@ class Alert extends Component {
 
   render() {
     return (
-      <div className='alert-container' style={{ textAlign: 'center' }}>
+      <div className='alert' style={{ textAlign: 'center' }}>
         <p style={this.getStyle()}>{this.props.text}</p>
       </div>
     );
@@ -47,4 +47,4 @@ class WarningAlert extends Alert {
   }
 }
 
-export { InfoAlert, ErrorAlert, WarningAlert, Alert };
+export { InfoAlert, ErrorAlert, WarningAlert };

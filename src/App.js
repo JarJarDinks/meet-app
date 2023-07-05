@@ -9,7 +9,6 @@ import {
   YAxis,
 } from 'recharts';
 
-import CityEventsChart from '../src/components/CityEventsChart';
 import './App.css';
 import CitySearch from './CitySearch';
 import EventGenre from './EventGenre';
