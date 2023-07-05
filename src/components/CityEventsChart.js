@@ -43,7 +43,7 @@ const CityEventsChart = ({ locations, events }) => {
           name='City'
           angle={60}
           interval={0}
-          tick={{ dx: 20, dy: 40, fontSize: 14 }}
+          tick={{ dx: 20, dy: 40, fontSize: 14, fill: '#fff' }}
         />
         <YAxis type='number' dataKey='y' name='weight' unit='kg' />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
