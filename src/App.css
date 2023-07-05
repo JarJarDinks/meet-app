@@ -2,6 +2,7 @@
 .App {
   text-align: center;
   padding: 2% 5%;
+  background: linear-gradient(to bottom right, #2D4356, #697986);
 }
 
 .App * {
@@ -21,6 +22,7 @@ p {
 }
 .showSuggestions {
   display: block;
+
 }
 
 input[type="text"],
@@ -82,6 +84,10 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: oldlace 3px 3px 3px;
 }
 
 .details-btn {
@@ -92,6 +98,7 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  margin-left: 50%;
 }
 
 .name {
@@ -127,18 +134,6 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-.Alert {
-  position: fixed;
-  top: 20px;
-}
-
-.alerts-container {
-  position: fixed;
-  top: 0px;
-  left: 20px;
-  width: 250px;
-  z-index: 1000;
-}
 
 .data-vis-wrapper {
   display: flex;
