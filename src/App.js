@@ -134,7 +134,7 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <h1>Developer Meet Ups</h1>
+        <h1 className='name'>Developer Meet Ups</h1>
         <div className='alerts-container'></div>
         <WarningAlert text={this.state.warningText} />
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
@@ -154,15 +154,20 @@ class App extends Component {
                 left: 20,
               }}>
               <CartesianGrid />
-              <XAxis type='category' dataKey='city' name='city' />
+              <XAxis type='category' dataKey='city' name='city' stroke='#fff' />
               <YAxis
                 type='number'
                 dataKey='number'
                 name='number of events'
                 allowDecimals={false}
+                stroke='#fff'
               />
-              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill='#8884d8' />
+              <Tooltip
+                cursor={{ strokeDasharray: '3 3' }}
+                wrapperStyle={{ color: 'white', background: '#333' }}
+                labelStyle={{ color: 'black' }}
+              />
+              <Scatter data={this.getData()} fill='#fff' />
             </ScatterChart>
           </ResponsiveContainer>
         </div>

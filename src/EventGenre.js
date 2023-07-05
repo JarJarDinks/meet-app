@@ -1,3 +1,4 @@
+import { render } from 'nprogress';
 import React, { useEffect, useState } from 'react';
 import {
   Cell,
@@ -19,7 +20,14 @@ const EventGenre = ({ events }) => {
   const [data, setData] = useState([]);
 
   function getData() {
-    const data = genres.map((genre, index) => {
+    const filteredGenres = genres.filter((genre) => {
+      const value = events.filter(({ summary }) =>
+        summary.split(' ').includes(genre)
+      ).length;
+      return value > 0;
+    });
+
+    const data = filteredGenres.map((genre, index) => {
       const value = events.filter(({ summary }) =>
         summary.split(' ').includes(genre)
       ).length;
@@ -28,7 +36,31 @@ const EventGenre = ({ events }) => {
     return data;
   }
 
-  const outerRadius = Math.min(80, Math.floor(400 / (genres.length + 1)));
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    index,
+  }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 1.3;
+    const x = cx + radius * Math.cos((-midAngle * Math.PI) / 180);
+    const y = cy + radius * Math.sin((-midAngle * Math.PI) / 180);
+    const { name } = data[index];
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill='black'
+        textAnchor={x > cx ? 'start' : 'end'}
+        dominantBaseline='central'>
+        {`${name} ${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
 
   return (
     <ResponsiveContainer height={400}>
@@ -40,11 +72,9 @@ const EventGenre = ({ events }) => {
           cx={200}
           cy={200}
           labelLine={false}
-          outerRadius={outerRadius}
+          outerRadius={80}
           labelPosition='outside'
-          label={({ name, percent }) =>
-            `${name} ${(percent * 100).toFixed(0)}%`
-          }>
+          label={renderCustomizedLabel}>
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.fill} />
           ))}
@@ -56,7 +86,11 @@ const EventGenre = ({ events }) => {
             <span style={{ color: entry.color }}>{entry.payload.name}</span>
           )}
         />
-        <Tooltip />
+        <Tooltip
+          cursor={{ strokeDasharray: '3 3' }}
+          wrapperStyle={{ color: 'white', background: '#333' }}
+          labelStyle={{ color: 'black' }}
+        />
       </PieChart>
     </ResponsiveContainer>
   );

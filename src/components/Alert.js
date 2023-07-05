@@ -11,12 +11,24 @@ class Alert extends Component {
     return {
       color: this.color,
       backgroundColor: this.bgColor,
+      borderWidth: '2px',
+      fontWeight: 'bolder',
+      borderRadius: '7px',
+      textAlign: 'center',
+
+      margin: '10px 0',
+      top: '0',
+      left: '20px',
+      width: '250px',
+      zIndex: '1000',
+      position: 'fixed',
+      fontSize: '14px',
     };
   };
 
   render() {
     return (
-      <div className='alert' style={{ textAlign: 'center' }}>
+      <div className='alert'>
         <p style={this.getStyle()}>{this.props.text}</p>
       </div>
     );

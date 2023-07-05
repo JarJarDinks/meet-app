@@ -2,7 +2,7 @@
 .App {
   text-align: center;
   padding: 2% 5%;
-  background: linear-gradient(to bottom right, #2D4356, #697986);
+  background: linear-gradient(to bottom right, #2D4356, #737d86);
 }
 
 .App * {
@@ -17,12 +17,32 @@ p {
   margin: 5px 0;
 }
 
+h2 {
+  color: #EAB2A0;
+}
+h3,
+p {
+  color: #fff;
+}
+
 .display-none {
   display: none;
 }
 .showSuggestions {
   display: block;
 
+}
+
+.link {
+  color: rgb(13, 13, 204);
+}
+
+.link:visited {
+  color: rgb(88, 2, 88);
+}
+
+.link:active {
+  color: rgb(204, 13, 13);
 }
 
 input[type="text"],
@@ -52,13 +72,15 @@ input[type="number"] {
 
 .suggestions {
   width: 250px;
-  position: absolute;
+  position: initial;
+  position: initial;
   z-index: 2;
   align-self: center;
   margin: 0;
   top: 43px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+
 }
 
 .suggestions > li {
@@ -87,23 +109,29 @@ input[type="number"] {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: oldlace 3px 3px 3px;
+  box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
 
 .details-btn {
   position: absolute;
   right: 5px;
   bottom: 5px;
-  padding: 5px 8px;
+  padding: 5px 10px;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  margin-left: 50%;
+  margin: 7px 7px;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 
 .name {
-  font-size: 18px;
-  font-weight: 600;
+  color: #A76F6F;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 2px 2px 4px #000000;
+
 }
 
 .group-name {
