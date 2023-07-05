@@ -171,6 +171,10 @@ class App extends Component {
           </ResponsiveContainer>
         </div>
         <EventList events={this.state.events} />
+        {!navigator.onLine ? (
+          <WarningAlert text='The app has no connection to the internet. The information displayed may not be up-to-date.' />
+        ) : null}
+
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
