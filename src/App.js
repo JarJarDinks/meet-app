@@ -125,30 +125,23 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.showWelcomeScreen === undefined)
+    const { locations, numberOfEvents, events } = this.state;
+    if (this.state.showWelcomeScreen === undefined) {
       return <div className='App' />;
-
-    const offlineMessage = navigator.onLine
-      ? ''
-      : 'The app has no connection to the internet. The information displayed may not be up-to-date.';
-
+    }
     return (
       <div className='App'>
         <div>
           <h1>Developer Meet Ups</h1>
-          <CitySearch
-            locations={this.state.locations}
-            updateEvents={this.updateEvents}
-          />
+          <CitySearch locations={locations} updateEvents={this.updateEvents} />
           <NumberOfEvents
-            numberOfEvents={this.state.numberOfEvents}
+            numberOfEvents={numberOfEvents}
             updateEvents={this.updateEvents}
           />
-          <WarningAlert text={offlineMessage} />
         </div>
         <h4>Events in each city</h4>
         <div className='data-vis-wrapper'>
-          <EventGenre events={this.state.events} />
+          <EventGenre events={events} />
           <ResponsiveContainer height={400}>
             <ScatterChart
               margin={{
@@ -170,7 +163,7 @@ class App extends Component {
             </ScatterChart>
           </ResponsiveContainer>
         </div>
-        <EventList events={this.state.events} />
+        <EventList events={events} />
         {!navigator.onLine ? (
           <WarningAlert text='The app has no connection to the internet. The information displayed may not be up-to-date.' />
         ) : null}
