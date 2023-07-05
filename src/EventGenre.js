@@ -1,4 +1,3 @@
-import { render } from 'nprogress';
 import React, { useEffect, useState } from 'react';
 import {
   Cell,
