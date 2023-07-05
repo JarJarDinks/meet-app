@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
-import {
-  CartesianGrid,
-  ResponsiveContainer,
-  Scatter,
-  ScatterChart,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts';
 
+import CityEventsChart from '../src/components/CityEventsChart';
 import './App.css';
 import CitySearch from './CitySearch';
 import EventGenre from './EventGenre';
@@ -16,7 +8,7 @@ import EventList from './EventList';
 import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { checkToken, extractLocations, getAccessToken, getEvents } from './api';
-import { WarningAlert } from './components/Alert';
+import { ErrorAlert, InfoAlert, WarningAlert } from './components/Alert';
 import './nprogress.css';
 
 class App extends Component {
@@ -28,6 +20,9 @@ class App extends Component {
       numberOfEvents: 32,
       selectedLocation: 'all',
       showWelcomeScreen: undefined,
+      infoAlert: '',
+      warningAlert: '',
+      errorAlert: '',
     };
   }
 
@@ -126,6 +121,7 @@ class App extends Component {
 
   render() {
     const { locations, numberOfEvents, events } = this.state;
+    const { infoAlert, warningAlert, errorAlert } = this.state;
     if (this.state.showWelcomeScreen === undefined) {
       return <div className='App' />;
     }
@@ -133,6 +129,11 @@ class App extends Component {
       <div className='App'>
         <div>
           <h1>Developer Meet Ups</h1>
+          <div className='alerts-container'>
+            {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+            {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
+            {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+          </div>
           <CitySearch locations={locations} updateEvents={this.updateEvents} />
           <NumberOfEvents
             numberOfEvents={numberOfEvents}
@@ -140,30 +141,13 @@ class App extends Component {
           />
         </div>
         <h4>Events in each city</h4>
-        <div className='data-vis-wrapper'>
+
+        <div className='charts-container'>
           <EventGenre events={events} />
-          <ResponsiveContainer width='99%' height={400}>
-            <ScatterChart
-              margin={{
-                top: 20,
-                right: 20,
-                left: 20,
-                bottom: 20,
-              }}>
-              <CartesianGrid />
-              <XAxis type='category' dataKey='city' name='city' />
-              <YAxis
-                type='number'
-                dataKey='number'
-                name='number of events'
-                allowDecimals={false}
-              />
-              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill='#8884d8' />
-            </ScatterChart>
-          </ResponsiveContainer>
+          <CityEventsChart locations={locations} events={events} />
         </div>
         <EventList events={events} />
+
         {!navigator.onLine ? (
           <WarningAlert text='The app has no connection to the internet. The information displayed may not be up-to-date.' />
         ) : null}
