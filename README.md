@@ -2,11 +2,22 @@
 
 ## Overview
 
-meet-app is a test driven development web app that helps users research, schedule, and attend events in their city. It uses the Google Calendar API and a serverless backend powered by AWS Lambda to retrieve upcoming events and handle access authorization. The app is still under construction.
+meet-app is a test driven development web app that helps users research, schedule, and attend events in their city. It uses the Google Calendar API and a serverless backend powered by AWS Lambda to retrieve upcoming events and handle access authorization. 
+
+## Technologies and Aproaches
+  - React
+  - Axios
+  - Service worker for offline functionality
+  - Test-Driven Development
+  - Behaviour-Driven Development 
 
 ## Links
 
 - [Live site URL](https://jarjardinks.github.io/meet-app/)
+
+## App Photo
+
+![dashboard](https://github.com/JarJarDinks/meet-app/assets/104926747/d7bdd9e9-023c-4bd8-a413-8a9cac7b4dba)
 
 ## Serverless Functions
 
