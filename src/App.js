@@ -165,8 +165,11 @@ class App extends Component {
               <Tooltip
                 cursor={{ strokeDasharray: '3 3' }}
                 wrapperStyle={{ color: 'white', background: '#333' }}
-                labelStyle={{ color: 'black' }}
+                labelStyle={{ color: 'white' }}
+                contentStyle={{ backgroundColor: '#333', border: 'none' }}
+                itemStyle={{ color: 'white', textTransform: 'capitalize' }}
               />
+
               <Scatter data={this.getData()} fill='#fff' />
             </ScatterChart>
           </ResponsiveContainer>

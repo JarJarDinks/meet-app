@@ -47,13 +47,13 @@ const EventGenre = ({ events }) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 1.3;
     const x = cx + radius * Math.cos((-midAngle * Math.PI) / 180);
     const y = cy + radius * Math.sin((-midAngle * Math.PI) / 180);
-    const { name } = data[index];
+    const { name, fill } = data[index];
 
     return (
       <text
         x={x}
         y={y}
-        fill='black'
+        fill={fill}
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline='central'>
         {`${name} ${(percent * 100).toFixed(0)}%`}
@@ -87,8 +87,9 @@ const EventGenre = ({ events }) => {
         />
         <Tooltip
           cursor={{ strokeDasharray: '3 3' }}
-          wrapperStyle={{ color: 'white', background: '#333' }}
-          labelStyle={{ color: 'black' }}
+          contentStyle={{ backgroundColor: '#333', border: 'none' }}
+          labelStyle={{ color: 'white' }}
+          itemStyle={{ color: 'white' }}
         />
       </PieChart>
     </ResponsiveContainer>

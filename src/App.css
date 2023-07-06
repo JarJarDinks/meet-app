@@ -175,6 +175,9 @@ input[type="number"] {
 .recharts-surface {
   overflow: visible;
 }
+.recharts-pie-labels {
+  text-align: right; 
+}
 
 .login-button {
   color: #494949;
@@ -238,4 +241,5 @@ input[type="number"] {
     min-width: auto;
     margin: 0 auto;
   }
+  
 }
