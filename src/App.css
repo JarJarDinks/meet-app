@@ -123,6 +123,9 @@ input[type="number"] {
   background-color: #fff;
   border: 1px solid #ccc;
 }
+.details-btn:hover {
+  opacity: 0.8;
+}
 
 .name {
   color: #A76F6F;
