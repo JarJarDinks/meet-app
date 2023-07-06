@@ -8,6 +8,10 @@ meet-app is a test driven development web app that helps users research, schedul
 
 - [Live site URL](https://jarjardinks.github.io/meet-app/)
 
+## App Photo
+
+![dashboard](https://github.com/JarJarDinks/meet-app/assets/104926747/d7bdd9e9-023c-4bd8-a413-8a9cac7b4dba)
+
 ## Serverless Functions
 
 - The Meet app utilizes serverless functions for various tasks such as real-time messaging, user authentication and authorization, and API endpoints. This approach allows me to prioritize essential app features and enables rapid development and deployment of new functionalities. With serverless technology, the app can easily scale to accommodate sudden spikes in traffic while keeping operational costs minimal. By heavily relying on serverless functions, the Meet app ensures a secure and user-friendly backend infrastructure for an optimal user experience.
