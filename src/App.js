@@ -135,15 +135,16 @@ class App extends Component {
     return (
       <div className='App'>
         <h1 className='name'>Developer Meet Ups</h1>
-        <div className='alerts-container'></div>
+
         <WarningAlert text={this.state.warningText} />
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <NumberOfEvents
           numberOfEvents={numberOfEvents}
           updateEvents={this.updateEvents}
         />
+
         <div className='data-vis-wrapper'>
-          <EventGenre events={this.state.events} />
+          <EventGenre className='piechart' events={this.state.events} />
           <h4>Events in each city</h4>
           <ResponsiveContainer height={400}>
             <ScatterChart

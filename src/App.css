@@ -72,21 +72,20 @@ input[type="number"] {
 
 .suggestions {
   width: 250px;
-  position: initial;
-  position: initial;
+  position: absolute; /* Change 'initial' to 'absolute' */
   z-index: 2;
-  align-self: center;
-  margin: 0;
-  top: 43px;
+  top: 90px;
+  left: 25px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
-
+  background-color: #eee; /* Move background color here */
+  border-radius: 4px;
 }
+
 
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
   cursor: default;
 }
 
@@ -175,9 +174,6 @@ input[type="number"] {
 .recharts-surface {
   overflow: visible;
 }
-.recharts-pie-labels {
-  text-align: right; 
-}
 
 .login-button {
   color: #494949;
@@ -231,9 +227,10 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 970px) {
   .data-vis-wrapper {
     flex-direction: row;
+    justify-content: space-between;
   }
   .data-vis-wrapper .recharts-responsive-container {
     flex-basis: 50%;
