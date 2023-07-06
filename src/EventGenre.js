@@ -9,31 +9,31 @@ import {
 } from 'recharts';
 
 const EventGenre = ({ events }) => {
-  const colors = ['#ffffff', '#ffbdaf', '#ff9c8a', '#ff7b62', 'ee4e34'];
-  const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
-
   useEffect(() => {
+    const colors = ['#ffffff', '#ffbdaf', '#ff9c8a', '#ff7b62', 'ee4e34'];
+    const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
+
+    function getData() {
+      const filteredGenres = genres.filter((genre) => {
+        const value = events.filter(({ summary }) =>
+          summary.split(' ').includes(genre)
+        ).length;
+        return value > 0;
+      });
+
+      const data = filteredGenres.map((genre, index) => {
+        const value = events.filter(({ summary }) =>
+          summary.split(' ').includes(genre)
+        ).length;
+        return { name: genre, value, fill: colors[index] };
+      });
+      return data;
+    }
+
     setData(() => getData(events));
   }, [events]);
 
   const [data, setData] = useState([]);
-
-  function getData() {
-    const filteredGenres = genres.filter((genre) => {
-      const value = events.filter(({ summary }) =>
-        summary.split(' ').includes(genre)
-      ).length;
-      return value > 0;
-    });
-
-    const data = filteredGenres.map((genre, index) => {
-      const value = events.filter(({ summary }) =>
-        summary.split(' ').includes(genre)
-      ).length;
-      return { name: genre, value, fill: colors[index] };
-    });
-    return data;
-  }
 
   const renderCustomizedLabel = ({
     cx,
