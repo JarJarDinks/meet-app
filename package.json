@@ -66,5 +66,9 @@
     "moduleNameMapper": {
       "axios": "axios/dist/axios.js"
     }
-  }
+  },
+  "description": "## Overview",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
