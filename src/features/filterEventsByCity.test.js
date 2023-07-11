@@ -1,12 +1,14 @@
 /* eslint-disable testing-library/no-node-access */
+
 /* eslint-disable no-undef */
-import { loadFeature, defineFeature } from 'jest-cucumber';
-import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { extractLocations } from '../api';
-import { mockData } from '../mock-data';
-import App from '../App';
-import CitySearch from '../CitySearch';
+import { defineFeature, loadFeature } from 'jest-cucumber';
+import React from 'react';
+
+import App from '../App.js';
+import { extractLocations } from '../api.js';
+import CitySearch from '../components/CitySearch/CitySearch.js';
+import { mockData } from '../mock-data.js';
 
 const feature = loadFeature('src/features/filterEventsByCity.feature');
 
@@ -65,7 +67,7 @@ defineFeature(feature, (test) => {
   }) => {
     let AppWrapper;
     given('user was typing “Berlin” in the city textbox', async () => {
-      AppWrapper = await mount(<App />); // mount means CitySearchWrapper (or other child componenets) can be used without being declared later in test
+      AppWrapper = await mount(<App />);
       AppWrapper.find('.city').simulate('change', {
         target: { value: 'Berlin' },
       });

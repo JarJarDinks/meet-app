@@ -1,8 +1,9 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
-import { shallow } from 'enzyme';
-import CitySearch from '../CitySearch';
-import { mockData } from '../mock-data';
-import { extractLocations } from '../api';
+
+import { extractLocations } from '../api.js';
+import CitySearch from '../components/CitySearch/CitySearch.js';
+import { mockData } from '../mock-data.js';
 
 describe('<CitySearch /> component', () => {
   let locations, CitySearchWrapper, infoText;
@@ -59,9 +60,10 @@ describe('<CitySearch /> component', () => {
     expect(CitySearchWrapper.state('suggestions')).toEqual(filteredLocations);
   });
 
+  //! broken test
   test('selecting a suggestion should change query state', () => {
     CitySearchWrapper.setState({
-      query: 'Berlin',
+      query: 'Berlin, Germany',
       infoText: '',
     });
     const suggestions = CitySearchWrapper.state('suggestions');

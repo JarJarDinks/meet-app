@@ -1,6 +1,7 @@
-import React from 'react';
 import { shallow } from 'enzyme';
-import NumberOfEvents from '../NumberOfEvents';
+import React from 'react';
+
+import NumberOfEvents from '../NumberOfEvents.js';
 
 describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsWrapper;

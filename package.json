@@ -61,14 +61,5 @@
     "gh-pages": "^5.0.0",
     "jest-cucumber": "^3.0.1",
     "puppeteer": "^18.1.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "axios": "axios/dist/axios.js"
-    }
-  },
-  "description": "## Overview",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC"
+  }
 }

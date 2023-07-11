@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { InfoAlert } from './components/Alert';
+import { InfoAlert } from '../Alert/Alert.js';
 
 class CitySearch extends Component {
   state = {

@@ -1,11 +1,12 @@
-import React from 'react';
 import { mount, shallow } from 'enzyme';
-import App from '../App';
-import EventList from '../EventList';
-import CitySearch from '../CitySearch';
-import NumberOfEvents from '../NumberOfEvents';
-import { mockData } from '../mock-data';
-import { extractLocations, getEvents } from '../api';
+import React from 'react';
+
+import App from '../App.js';
+import NumberOfEvents from '../NumberOfEvents.js';
+import { extractLocations, getEvents } from '../api.js';
+import CitySearch from '../components/CitySearch/CitySearch.js';
+import EventList from '../components/Events/EventList.js';
+import { mockData } from '../mock-data.js';
 
 // unit tests
 describe('<App /> component', () => {
@@ -37,7 +38,7 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  test('App passes "locations" stae as a prop to CitySearch', () => {
+  test('App passes "locations" state as a prop to CitySearch', () => {
     const AppWrapper = mount(<App />);
     const AppLocationsState = AppWrapper.state('locations');
     expect(AppLocationsState).not.toEqual(undefined);

@@ -1,11 +1,12 @@
 import * as atatus from 'atatus-spa';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'react/jsx-dev-runtime.js';
 
-import App from './App';
+import App from './App.js';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals.js';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
 
 atatus.config('39b3d30f45ee4306b18256490d89011c').install();
 

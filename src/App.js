@@ -10,13 +10,18 @@ import {
 } from 'recharts';
 
 import './App.css';
-import CitySearch from './CitySearch';
-import EventGenre from './EventGenre';
-import EventList from './EventList';
-import NumberOfEvents from './NumberOfEvents';
-import WelcomeScreen from './WelcomeScreen';
-import { checkToken, extractLocations, getAccessToken, getEvents } from './api';
-import { WarningAlert } from './components/Alert';
+import NumberOfEvents from './NumberOfEvents.js';
+import {
+  checkToken,
+  extractLocations,
+  getAccessToken,
+  getEvents,
+} from './api.js';
+import { WarningAlert } from './components/Alert/Alert.js';
+import CitySearch from './components/CitySearch/CitySearch.js';
+import EventGenre from './components/Events/EventGenre.js';
+import EventList from './components/Events/EventList.js';
+import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen.js';
 import './nprogress.css';
 
 class App extends Component {
