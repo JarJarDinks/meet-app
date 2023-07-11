@@ -2,10 +2,10 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import App from '../App.js';
-import NumberOfEvents from '../NumberOfEvents.js';
 import { extractLocations, getEvents } from '../api.js';
 import CitySearch from '../components/CitySearch/CitySearch.js';
-import EventList from '../components/Events/EventList.js';
+import EventList from '../components/EventList/EventList.js';
+import NumberOfEvents from '../components/NumberOfEvents/NumberOfEvents.js';
 import { mockData } from '../mock-data.js';
 
 // unit tests
@@ -15,7 +15,7 @@ describe('<App /> component', () => {
     AppWrapper = shallow(<App />);
   });
 
-  test('render list of events', () => {
+  test('render EventList', () => {
     expect(AppWrapper.find(EventList)).toHaveLength(1);
   });
 
