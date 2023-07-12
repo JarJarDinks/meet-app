@@ -128,6 +128,7 @@ class App extends Component {
             <CitySearch
               locations={locations}
               updateEvents={this.updateEvents}
+              id='city-search'
             />
             <NumberOfEvents
               numberOfEvents={numberOfEvents}

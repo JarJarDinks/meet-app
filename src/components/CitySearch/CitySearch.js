@@ -47,7 +47,7 @@ class CitySearch extends Component {
 
   render() {
     return (
-      <div className='CitySearch'>
+      <div className='CitySearch' id='city-search'>
         <div>
           <input
             placeholder='Location'
