@@ -127,8 +127,9 @@ class App extends Component {
           numberOfEvents={numberOfEvents}
           updateEvents={this.updateEvents}
         />
-        <div className='graph-charts'>
+        <div className='data-vis-wrapper'>
           <EventGenre className='piechart' events={events} />
+          <h4 className='event-title'>Events in each city</h4>
           <ScatterPlot
             className='scatterplot'
             events={events}

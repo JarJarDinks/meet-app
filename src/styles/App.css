@@ -56,7 +56,7 @@ input[type="number"] {
   align-self: center;
   height: 38px;
 }
-
+/*----------------------------------------------------------CitySearch----------------------------------------------------------*/
 .city {
   width: 250px;
 }
@@ -72,13 +72,13 @@ input[type="number"] {
 
 .suggestions {
   width: 250px;
-  position: absolute; /* Change 'initial' to 'absolute' */
+  position: absolute; 
   z-index: 2;
   top: 90px;
   left: 25px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
-  background-color: #eee; /* Move background color here */
+  background-color: #eee; 
   border-radius: 4px;
 }
 
@@ -97,7 +97,21 @@ input[type="number"] {
 .suggestions > li:hover {
   background-color: #bcdcdb;
 }
+/*----------------------------------------------------------Graphs----------------------------------------------------------*/
+.data-vis-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.data-vis-wrapper .recharts-responsive-container {
+    max-width: 100%;
+    display: flex;
+}
+.recharts-surface {
+  overflow: visible;
+}
 
+/*----------------------------------------------------------EventList----------------------------------------------------------*/
 .event {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
@@ -109,6 +123,10 @@ input[type="number"] {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+}
+
+.EventList { 
+  padding-top: 20px;
 }
 
 .details-btn {
@@ -164,43 +182,6 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-/* .data-vis-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.data-vis-wrapper .recharts-responsive-container {
-  min-width: 100%;
-  display: flex;
-}
-.recharts-surface {
-  overflow: visible;
-}
-
-.graph-charts {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-
-
-} */
-
-/* this is the graphs css in main branch */
-/* .data-vis-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.data-vis-wrapper .recharts-responsive-container {
-  min-width: 100%;
-  display: flex;
-}
-.recharts-surface {
-  overflow: visible;
-} */
-
-
 .login-button {
   color: #494949;
   text-transform: uppercase;
@@ -253,15 +234,23 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
-@media only screen and (min-width: 970px) {
-  .data-vis-wrapper {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .data-vis-wrapper .recharts-responsive-container {
-    flex-basis: 50%;
-    max-width: 50%;
-    min-width: auto;
-    margin: 0 auto;
-  }
+
+@media only screen and (min-width: 992px) {
+    .data-vis-wrapper {
+        flex-direction: row;
+    }
+    .data-vis-wrapper .recharts-responsive-container {
+        flex-basis: 50%;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+    .pie-chart {
+      margin-left: 50%;
+      margin-right: 50%;
+    }
+}
+@media only screen and (max-width: 992px) {
+  .event-title {
+      margin-top: 10px;
+    }
 }
