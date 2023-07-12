@@ -164,7 +164,7 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-.data-vis-wrapper {
+/* .data-vis-wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -177,6 +177,28 @@ input[type="number"] {
   overflow: visible;
 }
 
+.graph-charts {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+
+} */
+
+/* this is the graphs css in main branch */
+/* .data-vis-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.data-vis-wrapper .recharts-responsive-container {
+  min-width: 100%;
+  display: flex;
+}
+.recharts-surface {
+  overflow: visible;
+} */
 
 
 .login-button {

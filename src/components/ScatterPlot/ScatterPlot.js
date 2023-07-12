@@ -10,22 +10,21 @@ import {
 } from 'recharts';
 
 const ScatterPlot = ({ locations, events }) => {
-  const [data, setData] = useState([]);
-
   useEffect(() => {
-    setData(getData());
-  }, [data]);
+    function getData() {
+      const data = locations.map((location) => {
+        const count = events.filter(
+          (event) => event.location === location
+        ).length;
+        const city = location.split(', ')[0];
+        return { city, count };
+      });
+      return data;
+    }
+    setData(() => getData(events, locations));
+  }, [events, locations]);
 
-  const getData = () => {
-    const data = locations.map((location) => {
-      const count = events.filter(
-        (event) => event.location === location
-      ).length;
-      const city = location.split(', ')[0];
-      return { city, count };
-    });
-    return data;
-  };
+  const [data, setData] = useState([]);
 
   return (
     <div className='data-vis-wrapper'>
