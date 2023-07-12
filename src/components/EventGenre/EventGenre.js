@@ -62,37 +62,39 @@ const EventGenre = ({ events }) => {
   };
 
   return (
-    <ResponsiveContainer height={400}>
-      <PieChart width={400} height={400}>
-        <Pie
-          data={data}
-          dataKey='value'
-          nameKey='name'
-          cx={200}
-          cy={200}
-          labelLine={false}
-          outerRadius={80}
-          labelPosition='outside'
-          label={renderCustomizedLabel}>
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.fill} />
-          ))}
-        </Pie>
-        <Legend
-          verticalAlign='bottom'
-          layout='horizontal'
-          formatter={(value, entry, index) => (
-            <span style={{ color: entry.color }}>{entry.payload.name}</span>
-          )}
-        />
-        <Tooltip
-          cursor={{ strokeDasharray: '3 3' }}
-          contentStyle={{ backgroundColor: '#333', border: 'none' }}
-          labelStyle={{ color: 'white' }}
-          itemStyle={{ color: 'white' }}
-        />
-      </PieChart>
-    </ResponsiveContainer>
+    <div className='data-vis-wrapper'>
+      <ResponsiveContainer height={400}>
+        <PieChart width={400} height={400}>
+          <Pie
+            data={data}
+            dataKey='value'
+            nameKey='name'
+            cx={200}
+            cy={200}
+            labelLine={false}
+            outerRadius={80}
+            labelPosition='outside'
+            label={renderCustomizedLabel}>
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.fill} />
+            ))}
+          </Pie>
+          <Legend
+            verticalAlign='bottom'
+            layout='horizontal'
+            formatter={(value, entry, index) => (
+              <span style={{ color: entry.color }}>{entry.payload.name}</span>
+            )}
+          />
+          <Tooltip
+            cursor={{ strokeDasharray: '3 3' }}
+            contentStyle={{ backgroundColor: '#333', border: 'none' }}
+            labelStyle={{ color: 'white' }}
+            itemStyle={{ color: 'white' }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

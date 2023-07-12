@@ -127,12 +127,12 @@ class App extends Component {
           numberOfEvents={numberOfEvents}
           updateEvents={this.updateEvents}
         />
-        <div>
-          <EventGenre className='piechart' events={this.state.events} />
+        <div className='graph-charts'>
+          <EventGenre className='piechart' events={events} />
           <ScatterPlot
             className='scatterplot'
-            events={this.state.events}
-            locations={this.state.locations}
+            events={events}
+            locations={locations}
           />
         </div>
 
