@@ -186,6 +186,20 @@ input[type="number"] {
 
 } */
 
+/* this is the graphs css in main branch */
+/* .data-vis-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.data-vis-wrapper .recharts-responsive-container {
+  min-width: 100%;
+  display: flex;
+}
+.recharts-surface {
+  overflow: visible;
+} */
+
 
 .login-button {
   color: #494949;
