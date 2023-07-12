@@ -1,7 +1,6 @@
 import * as atatus from 'atatus-spa';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'react/jsx-dev-runtime.js';
 
 import App from './App.js';
 import reportWebVitals from './reportWebVitals.js';

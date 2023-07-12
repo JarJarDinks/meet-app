@@ -13,16 +13,17 @@ describe('<App /> component', () => {
   let AppWrapper;
   beforeAll(() => {
     AppWrapper = shallow(<App />);
+    // eslint-disable-next-line testing-library/no-debugging-utils
+    console.log(AppWrapper.debug());
   });
-
   test('render EventList', () => {
     expect(AppWrapper.find(EventList)).toHaveLength(1);
   });
+  console.log(EventList);
 
   test('render CitySearch', () => {
     expect(AppWrapper.find(CitySearch)).toHaveLength(1);
   });
-
   test('render NumberOfEvents', () => {
     expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
   });

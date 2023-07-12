@@ -28,7 +28,6 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div className='NumberOfEvents'>
-        <h3>Number of events</h3>
         <input
           id='number-of-events'
           type='number'

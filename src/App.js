@@ -119,14 +119,22 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <h1 className='name'>Developer Meet Ups</h1>
-
         <WarningAlert text={this.state.warningText} />
-        <CitySearch locations={locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents
-          numberOfEvents={numberOfEvents}
-          updateEvents={this.updateEvents}
-        />
+        <header className='header'>
+          <div className='logo'>
+            <h1 className='name'>MEET</h1>
+          </div>
+          <div className='header-menu'>
+            <CitySearch
+              locations={locations}
+              updateEvents={this.updateEvents}
+            />
+            <NumberOfEvents
+              numberOfEvents={numberOfEvents}
+              updateEvents={this.updateEvents}
+            />
+          </div>
+        </header>
         <div className='data-vis-wrapper'>
           <EventGenre className='piechart' events={events} />
           <h4 className='event-title'>Events in each city</h4>
@@ -136,8 +144,8 @@ class App extends Component {
             locations={locations}
           />
         </div>
-
         <EventList events={events} />
+
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {

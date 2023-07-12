@@ -8,6 +8,7 @@ import React from 'react';
 import App from '../App.js';
 import { extractLocations } from '../api.js';
 import CitySearch from '../components/CitySearch/CitySearch.js';
+import EventList from '../components/EventList/EventList.js';
 import { mockData } from '../mock-data.js';
 
 const feature = loadFeature('src/features/filterEventsByCity.feature');
@@ -66,6 +67,9 @@ defineFeature(feature, (test) => {
     then,
   }) => {
     let AppWrapper;
+    const berlinEvents = mockData.filter(
+      (event) => event.location === 'Berlin, Germany'
+    );
     given('user was typing “Berlin” in the city textbox', async () => {
       AppWrapper = await mount(<App />);
       AppWrapper.find('.city').simulate('change', {
@@ -96,7 +100,9 @@ defineFeature(feature, (test) => {
     and(
       'the user should receive a list of upcoming events in that city',
       () => {
-        expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
+        expect(AppWrapper.find(EventList).find('.EventList li')).toHaveLength(
+          berlinEvents.length
+        );
       }
     );
   });

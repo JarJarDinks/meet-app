@@ -55,27 +55,40 @@ input[type="number"] {
   line-height: 20px;
   align-self: center;
   height: 38px;
+  text-align: center;
+  margin: 0.5rem 2px;
 }
 /*----------------------------------------------------------CitySearch----------------------------------------------------------*/
+.header { 
+  display: flex;
+  margin-bottom: 1rem;
+}
+.header-menu {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
 .city {
   width: 250px;
 }
 
 .CitySearch {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 300px;
-  max-width: 300px;
-  margin: auto;
-  position: relative;
+margin: 0.25rem 0;
+    position: relative;
+}
+.city-search_input {
+  width: 250px;
 }
 
 .suggestions {
   width: 250px;
   position: absolute; 
   z-index: 2;
-  top: 90px;
-  left: 25px;
+  margin: 0;
+  top: 46px;
+  right: 2px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
   background-color: #eee; 
@@ -96,19 +109,47 @@ input[type="number"] {
 
 .suggestions > li:hover {
   background-color: #bcdcdb;
+  border-radius: 4px;
 }
+
+/*----------------------------------------------------------NumberOfEvents----------------------------------------------------------*/
+.numberOfEvents {
+margin: 0.25rem 0;
+    position: relative;
+}
+
 /*----------------------------------------------------------Graphs----------------------------------------------------------*/
 .data-vis-wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .data-vis-wrapper .recharts-responsive-container {
-    max-width: 100%;
-    display: flex;
+  max-width: 100%;
+  display: flex;
 }
 .recharts-surface {
   overflow: visible;
+}
+@media only screen and (min-width: 992px) {
+    .data-vis-wrapper {
+        flex-direction: row;
+    }
+    .data-vis-wrapper .recharts-responsive-container {
+        flex-basis: 50%;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+    .pie-chart {
+      margin-left: 50%;
+      margin-right: 50%;
+    }
+}
+@media only screen and (max-width: 992px) {
+  .event-title {
+      margin-top: 10px;
+    }
 }
 
 /*----------------------------------------------------------EventList----------------------------------------------------------*/
@@ -123,10 +164,20 @@ input[type="number"] {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+  z-index: 1;
 }
 
 .EventList { 
-  padding-top: 20px;
+  padding-top: 25px;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-gap: 20px;
+position: relative;
+}
+@media screen and (max-width:800px) {
+  .EventList {
+    grid-template-columns: 1fr;
+  }
 }
 
 .details-btn {
@@ -144,13 +195,18 @@ input[type="number"] {
 .details-btn:hover {
   opacity: 0.8;
 }
+.details {
+  grid-column: auto;
+  z-index: 2;
+}
 
 .name {
   color: #A76F6F;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
   margin: 0;
   text-shadow: 2px 2px 4px #000000;
+  position: absolute;
 
 }
 
@@ -168,12 +224,10 @@ input[type="number"] {
   overflow-x: hidden;
 }
 
-.numberOfEvents {
-  width: 200px;
-  margin: 20px auto;
-  text-align: center;
-}
 
+
+
+/*---------------------------------------------------------GoogleLogin---------------------------------------------------------*/
 .button-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -181,7 +235,6 @@ input[type="number"] {
   padding: 20px;
   font-family: sans-serif;
 }
-
 .login-button {
   color: #494949;
   text-transform: uppercase;
@@ -194,7 +247,6 @@ input[type="number"] {
   min-width: 10rem;
   margin: 1rem;
 }
-
 .google-btn {
   width: 184px;
   height: 42px;
@@ -235,22 +287,3 @@ input[type="number"] {
 }
 
 
-@media only screen and (min-width: 992px) {
-    .data-vis-wrapper {
-        flex-direction: row;
-    }
-    .data-vis-wrapper .recharts-responsive-container {
-        flex-basis: 50%;
-        max-width: 50%;
-        margin: 0 auto;
-    }
-    .pie-chart {
-      margin-left: 50%;
-      margin-right: 50%;
-    }
-}
-@media only screen and (max-width: 992px) {
-  .event-title {
-      margin-top: 10px;
-    }
-}

@@ -31,15 +31,15 @@ class CitySearch extends Component {
     }
   };
 
-  handleItemClicked = (suggestion) => {
+  handleItemClicked(suggestion) {
     this.setState({
       query: suggestion,
       suggestions: [],
-      showSuggestions: false,
+      showSuggestions: true,
       infoText: '',
     });
     this.props.updateEvents(suggestion, this.props.numnberOfEvents);
-  };
+  }
 
   handleBlur = () => {
     this.setState({ showSuggestions: false });
@@ -49,8 +49,9 @@ class CitySearch extends Component {
     return (
       <div className='CitySearch'>
         <div>
-          <h3>Choose a city</h3>
           <input
+            placeholder='Location'
+            id='city-search-input'
             type='text'
             className='city'
             value={this.state.query}
@@ -61,6 +62,7 @@ class CitySearch extends Component {
             onBlur={this.handleBlur}
           />
         </div>
+
         <ul
           className='suggestions'
           style={this.state.showSuggestions ? {} : { display: 'none' }}>
@@ -71,10 +73,11 @@ class CitySearch extends Component {
               {suggestion}
             </li>
           ))}
-          <li key='all' onMouseDown={() => this.handleItemClicked('all')}>
+          <li key='all' onMouseDown={() => this.handleItemClicked}>
             <b>See all cities</b>
           </li>
         </ul>
+
         <InfoAlert text={this.state.infoText} />
       </div>
     );
