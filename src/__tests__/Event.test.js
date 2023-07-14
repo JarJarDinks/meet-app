@@ -38,9 +38,10 @@ describe('<Event /> component', () => {
     expect(eventLocation.text()).toBe(`@${event.summary} | ${event.location}`);
   });
 
+  //! this fails
   // Test 5: checks the button is collapsed by default
   test('renders collapsed by default', () => {
-    expect(EventWrapper.state('collapsed')).toBe(true);
+    expect(EventWrapper.exists('div.details')).toBe(false);
   });
 
   // test 7: renders collapsed view
@@ -55,7 +56,8 @@ describe('<Event /> component', () => {
     const detailsButton = EventWrapper.find('button.details-btn');
     expect(detailsButton.text()).toBe('show details');
     detailsButton.simulate('click');
-    expect(EventWrapper.state('collapsed')).toBe(false);
+    EventWrapper.update();
+    expect(EventWrapper.exists('div.details')).toBe(true);
   });
 
   // test 9: renders expanded view
@@ -70,6 +72,22 @@ describe('<Event /> component', () => {
     const detailsButton = EventWrapper.find('button.details-btn');
     expect(detailsButton.text()).toBe('hide details');
     detailsButton.simulate('click');
-    expect(EventWrapper.state('collapsed')).toBe(true);
+    EventWrapper.update();
+    expect(EventWrapper.exists('div.details')).toBe(false);
+  });
+
+  // Test 12: checks the behavior when the component is re-rendered with different props
+  test('correctly updates when the event prop changes', () => {
+    const newEvent = mockData[1];
+    EventWrapper.setProps({ event: newEvent });
+
+    // Assert that the component renders the updated information
+    expect(EventWrapper.find('h2.summary').text()).toBe(newEvent.summary);
+  });
+
+  // Test 13: checks if the button text changes correctly after a click event
+  test('button initially shows "show details"', () => {
+    const button = EventWrapper.find('button.details-btn');
+    expect(button.text()).toBe('show details');
   });
 });

@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import App from '../App.js';
@@ -11,24 +10,23 @@ import { mockData } from '../mock-data.js';
 
 // unit tests
 describe('<App /> component', () => {
-  test('render EventList', () => {
-    render(<App />);
-    const EventListElement = screen.getByTestId('event-list');
-    expect(EventListElement).toBeInTheDocument();
-    console.log('EventListElement', EventListElement);
-    console.log(App);
+  let AppWrapper;
+  beforeAll(() => {
+    AppWrapper = shallow(<App />);
+    // eslint-disable-next-line testing-library/no-debugging-utils
+    console.log(AppWrapper.debug());
+  });
+
+  test('render list of events', () => {
+    expect(AppWrapper.find(EventList)).toHaveLength(1);
   });
 
   test('render CitySearch', () => {
-    render(<App />);
-    const CitySearchElement = screen.getByTestId('city-search');
-    expect(CitySearchElement).toBeInTheDocument();
+    expect(AppWrapper.find(CitySearch)).toHaveLength(1);
   });
 
   test('render NumberOfEvents', () => {
-    render(<App />);
-    const NumberOfEventsElement = screen.getByTestId('number-of-events');
-    expect(NumberOfEventsElement).toBeInTheDocument();
+    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
   });
 });
 
@@ -54,7 +52,6 @@ describe('<App /> integration', () => {
 
   test('get list of events matching the city selected by the user', async () => {
     const AppWrapper = mount(<App />);
-    console.log(AppWrapper);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
     const locations = extractLocations(mockData);
     CitySearchWrapper.setState({ suggestions: locations });

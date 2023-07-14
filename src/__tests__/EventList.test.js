@@ -10,4 +10,11 @@ describe('<EventList /> component', () => {
     const EventListWrapper = shallow(<EventList events={mockData} />);
     expect(EventListWrapper.find(Event)).toHaveLength(mockData.length);
   });
+  test('Events gets passed from Event to EventList', () => {
+    const EventListWrapper = shallow(<EventList events={mockData} />);
+    const eventComponent = EventListWrapper.find(Event);
+    eventComponent.forEach((eventComponent, index) => {
+      expect(eventComponent.props().event).toEqual(mockData[index]);
+    });
+  });
 });

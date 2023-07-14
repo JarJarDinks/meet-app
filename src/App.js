@@ -80,7 +80,7 @@ class App extends Component {
     this.updateEvents(this.state.selectedLocation);
   }
 
-  updateEvents = (location, inputNumber) => {
+  updateEvents = (location, number) => {
     const { eventCount, selectedLocation } = this.state;
 
     if (location) {
@@ -101,10 +101,10 @@ class App extends Component {
           selectedLocation === 'all'
             ? events
             : events.filter((event) => event.location === selectedLocation);
-        const shownEvents = locationEvents.slice(0, inputNumber);
+        const shownEvents = locationEvents.slice(0, number);
         this.setState({
           events: shownEvents,
-          eventCount: inputNumber,
+          eventCount: number,
         });
       });
     }
@@ -128,7 +128,6 @@ class App extends Component {
             <CitySearch
               locations={locations}
               updateEvents={this.updateEvents}
-              id='city-search'
             />
             <NumberOfEvents
               numberOfEvents={numberOfEvents}
